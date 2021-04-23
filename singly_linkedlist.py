@@ -18,4 +18,9 @@ class LinkedList:
                 break
             last_node = last_node.next
     
-    
+    def listIsEmpty(self):
+        if self.head is None:
+            return True
+        else:
+            return False
+            
