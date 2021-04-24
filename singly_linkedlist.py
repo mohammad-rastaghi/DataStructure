@@ -18,6 +18,47 @@ class LinkedList:
                 break
             last_node = last_node.next
     
+    def insertHead(self, newNode):
+        if self.listIsEmpty():
+            self.head = newNode
+            return
+        temp = self.head
+        self.head = newNode
+        newNode.next = temp
+
+    def insertAt(self, newNode, position):
+        if self.listIsEmpty() is False:
+            if position is 0:
+                self.insertHead(newNode)
+                return
+            if position < 0 or position > self.listlength():
+                print('your input position is Invalid!!')
+                return
+            currentNode = self.head
+            currentPosition = 0
+            while True:
+                if currentPosition == position:
+                    newNode.next = prevNode.next
+                    prevNode.next = newNode
+                    break
+                prevNode = currentNode
+                currentNode = currentNode.next
+                currentPosition += 1
+        else:
+            print('your list is Empty!!')
+
+    def listlength(self):
+        if self.listIsEmpty():
+            return 0
+        length = 0
+        currentNode = self.head
+        while True:
+            if currentNode is None:
+                break
+            currentNode = currentNode.next
+            length += 1
+        return length
+ 
     def listIsEmpty(self):
         if self.head is None:
             return True
@@ -43,8 +84,11 @@ firstNode = Node('adam')
 secondNode = Node('Harry')
 #third
 thirdNode = Node('jean')
+#forth
+forthNode = Node('sara')
 linked = LinkedList()
 linked.insertEnd(firstNode)
 linked.insertEnd(secondNode)
-linked.insertEnd(thirdNode)
+linked.insertHead(thirdNode)
+linked.insertAt(forthNode, 1)
 linked.printer()
