@@ -70,6 +70,30 @@ class LinkedList:
         else:
             print('sorry! your list is Empty and delete operation was Failed!')
 
+    def deleteAt(self, position):
+        if self.listIsEmpty() is False:
+            currentPosition = 0
+            currentNode = self.head
+            if position is 0:
+                self.deleteHead()
+                return
+            if position < 0 or position > self.listlength():
+                print('Entered Position is incorrect!')
+                return
+            while True:
+                if currentPosition == position:
+                    prevNode.next = currentNode.next
+                    currentNode.next = None
+                    del currentNode
+                    break
+                prevNode = currentNode
+                currentNode = currentNode.next
+                currentPosition += 1
+        else:
+            print('your list is Empty..Positional delete was Failed!!')
+
+
+
     def listlength(self):
         if self.listIsEmpty():
             return 0
@@ -114,5 +138,5 @@ linked.insertEnd(firstNode)
 linked.insertEnd(secondNode)
 linked.insertHead(thirdNode)
 linked.insertAt(forthNode, 1)
-linked.deleteHead()
+linked.deleteAt(20)
 linked.printer()
